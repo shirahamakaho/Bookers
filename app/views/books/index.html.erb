@@ -2,16 +2,26 @@
 
 <table>
  <% @books.each do |book| %>
+ <thead>
+  <tr>
+   <th>Title</th>
+   <th>Body</th>
+  </tr>
+ </thead>
 
-  <p>Title</p><p>Body</p>
-  <span><%= book.title %></span>
-  <span><%= book.body %></span>
+ <tbody>
+  <tr>
+   <td><%= book.title %></td>
+   <td><%= book.body %></td>
+   <%= link_to "Show",book_path(book.id),method: :get %>
+   <%= link_to "Edit",edit_book_path(book.id) %>
+   <%= link_to "Destroy",book_path(book.id),method: :delete,"data-confirm" => "Are you sure?"  %>
+  </tr>
+ </tbody>
 
-  <%= link_to "Show",book_path(book.id) %>
-  <%= link_to "Edit",edit_book_path(book.id) %>
-  <!--%= link_to "Destroy",destroy_book_path(book.id),method::delete,"data-confirm" => "Are you sure?"  %>-->
 
  <%end%>
+
 </table>
 
 <h2>New book</h2>
