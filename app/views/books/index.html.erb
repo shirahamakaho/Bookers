@@ -1,4 +1,4 @@
-<p id="flash"><%= flash[:notice] %></p>
+<p id="notice"><%= flash[:notice] %></p>
 
 <h1>Books</h1>
 
@@ -27,20 +27,30 @@
 </table>
 
 <h2>New book</h2>
-
+<div id="error_explanation">
 <% if @book.errors.any? %>
- <% @book.errors.count %>errors prohibited this book from being saved:
+ <%= @book.errors.count %>
+ errors prohibited this book from being saved:
 <ul>
  <% @book.errors.full_messages.each do |message| %>
  <li><%= message %></li>
  <%end%>
 </ul>
 <%end%>
+</div>
 
 <%= form_with model: @book do |f| %>
-<p>Title</p>
-<%= f.text_field:title %>
-<p>Body</p>
-<%= f.text_area:body %>
-<%= f.submit "Create Book" %>
+
+ <div class="field">
+  <lavel>Title</lavel>
+  <%= f.text_field:title %>
+ </div>
+ <div class="field">
+  <lavel>Body</lavel>
+  <%= f.text_area:body %>
+ </div>
+ <div class="actions">
+  <%= f.submit "Create Book" %>
+ </div>
+
 <%end%>
